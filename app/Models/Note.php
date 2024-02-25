@@ -15,6 +15,7 @@ class Note extends Model
         'user_id',
         'title',
         'body',
+        'recipient',
         'send_date',
         'is_published',
         'heart_count',

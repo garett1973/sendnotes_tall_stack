@@ -27,4 +27,8 @@ Route::view('notes', 'notes.index')
     ->middleware(['auth'])
     ->name('notes_list');
 
+Route::view('notes/create', 'notes.create')
+    ->middleware(['auth'])
+    ->name('notes_create');
+
 require __DIR__.'/auth.php';
