@@ -43,6 +43,6 @@ new class extends Component {
         <x-input icon="user" wire:model="noteRecipient" label="Recipient" type="email" class="mb-4" placeholder="Recipient's email"></x-input>
         <x-input icon="calendar" wire:model="noteSendDate" label="Send Date" type="date" class="mb-4"></x-input>
         <x-textarea wire:model="noteBody" label="Body" class="mb-4" placeholder="Share your thoughts"></x-textarea>
-        <x-button primary right-icon="plus" spinner wire:click="submit">Create Note</x-button>
+        <x-button primary right-icon="plus" spinner type="submit">Create Note</x-button>
     </form>
 </div>
