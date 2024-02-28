@@ -11,7 +11,7 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <h1 class="text-2xl font-bold mb-4">Notes</h1>
                     <div class="w-full">
-                        <livewire:notes.show-notes />
+                        <livewire:notes.show-notes lazy/>
                     </div>
                 </div>
             </div>

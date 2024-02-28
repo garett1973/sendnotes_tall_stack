@@ -30,7 +30,7 @@ new #[Layout('layouts.app')] class extends Component {
         $this->noteIsPublished = $note->is_published;
     }
 
-    public function saveNote(): Redirector
+    public function saveNote()
     {
 
         $validated = $this->validate([
@@ -54,7 +54,9 @@ new #[Layout('layouts.app')] class extends Component {
 
         session()->flash('success', 'Note updated successfully');
 
-        return redirect()->route('notes_list');
+        $this->dispatch('note-saved');
+
+//        return redirect()->route('notes_list');
     }
 
 }; ?>
@@ -92,10 +94,12 @@ new #[Layout('layouts.app')] class extends Component {
                         <div class="mt-4">
                             <x-checkbox label="Note is published" wire:model="noteIsPublished" id="is_published"/>
                         </div>
-                        <div class="my-4 flex gap-4">
-                            <x-button primary spinner type="submit">Save</x-button>
-                            <x-button secondary href="{{ route('notes_list') }}" wire:navigate>Cancel</x-button>
+                        <div class="my-4 flex justify-between">
+                            <x-button positive spinner type="submit">Save</x-button>
+                            <x-button secondary href="{{ route('notes_list') }}" wire:navigate>Back to Notes</x-button>
                         </div>
+                        <x-action-message on="note-saved" />
+                        <x-errors />
                     </form>
                 </div>
             </div>

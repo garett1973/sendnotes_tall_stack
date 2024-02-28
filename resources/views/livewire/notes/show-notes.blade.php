@@ -19,6 +19,19 @@ new class extends Component {
         }
     }
 
+    public function placeholder(): string
+    {
+        return <<<'HTML'
+<div role="status">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="spinner" class="animate-spin h-10 w-10 text-blue-500 dark:text-blue-300" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+        <path fill="currentColor" d="M256 40c-97 0-176 79-176 176s79 176 176 176 176-79 176-176-79-176-176-176zm0 304c-75.02 0-136-60.98-136-136 0-75.02 60.98-136 136-136 75.02 0 136 60.98 136 136 0 75.02-60.98 136-136 136zm0-304c-75.02 0-136 60.98-136 136 0 75.02 60.98 136 136 136 75.02 0 136-60.98 136-136 0-75.02-60.98-136-136-136z"></path>
+    </svg>
+    <span class="sr-only">Loading...</span>
+</div>
+HTML;
+
+    }
+
     public function with(): array
     {
         return [
