@@ -59,8 +59,12 @@ HTML;
             @foreach ($notes as $note)
                 <x-card wire:key="{{ $note->id }}">
                     <div class="w-full flex items-center justify-between p-4">
-                        <a href="{{ route("note_edit", $note) }}" wire:navigate
-                           class="text-blue-500 text-xl dark:text-blue-300 hover:underline">{{ $note->title }}</a>
+                        @can('update', $note)
+                            <a href="{{ route("note_edit", $note) }}" wire:navigate
+                               class="text-blue-500 text-xl dark:text-blue-300 hover:underline">{{ $note->title }}</a>
+                        @else
+                            <p class="text-blue-500 text-xl dark:text-blue-300">{{ $note->title }}</p>
+                        @endcan
                         <p class="text-gray-600 text-xs dark:text-gray-300">
                             <b>{{ $note->send_date->format('m/d/Y') }}</b></p>
                     </div>
@@ -71,7 +75,7 @@ HTML;
                         <p class="text-gray-600 text-xs dark:text-gray-300">Recipient: <span
                                 class="font-semibold">{{ $note->recipient }}</span></p>
                         <div>
-                            <x-button.circle icon="eye"></x-button.circle>
+                            <x-button.circle icon="eye" href="{{ route('note_view', $note) }}"></x-button.circle>
                             <x-button.circle icon="trash" wire:click="delete('{{ $note->id }}') "></x-button.circle>
                         </div>
                     </div>

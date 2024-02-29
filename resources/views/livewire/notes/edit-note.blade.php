@@ -22,6 +22,7 @@ new #[Layout('layouts.app')] class extends Component {
             return redirect()->route('notes_list');
         }
 
+        $this->authorize('update', $note);
         $this->fill($note);
         $this->noteTitle = $note->title;
         $this->noteRecipient = $note->recipient;
@@ -34,7 +35,7 @@ new #[Layout('layouts.app')] class extends Component {
     {
 
         $validated = $this->validate([
-            'noteTitle' => 'required|string|min:5|unique:notes,title,',
+            'noteTitle' => 'required|string|min:5',
             'noteRecipient' => 'required|email',
             'noteBody' => 'required|string|min:10',
             'noteSendDate' => 'required|date',
